@@ -1,0 +1,2 @@
+## Run server
+make local
