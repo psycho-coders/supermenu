@@ -3,7 +3,7 @@ from .menu import menu_handler
 
 v1_app = Blueprint("v1", __name__, url_prefix="/v1")
 
-@v1_app.route("/")
+@v1_app.route("/_health")
 def health():
     return "OK"
 
