@@ -1,0 +1,24 @@
+version: "3.9"
+services:
+  web:
+    build:
+      context: ./../
+      dockerfile: dockerfiles/Dockerfile
+    ports:
+      - "5000:5000"
+    command: sh -c "python3 /app/main.py"
+    depends_on:
+      - firebase
+
+  firebase:
+    image: bandlabtechnologies/firebase-tools:9.18.0
+    container_name: server-firebase-emulator
+    environment:
+      - GCP_PROJECT=project-test
+      - FIRESTORE_PORT=8082
+      - PUBSUB_PORT=8085
+      - PUBSUB_PROJECT_ID=project-test
+    ports:
+      - 4000:4000 # emulator suite ui
+      - 8082:8082 # firestore
+      - 8085:8085 # pubsub
