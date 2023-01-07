@@ -1,6 +1,6 @@
 .PHONY: local
 local:
-	python3 main.py
+	PYTHONDONTWRITEBYTECODE=1 FIRESTORE_EMULATOR_HOST=localhost:8082 GOOGLE_APPLICATION_CREDENTIALS=./fake_creds.json python3 main.py
 
 .PHONY: clean
 clean:
@@ -8,9 +8,9 @@ clean:
 	docker compose -f dockerfiles/docker-compose.yml rm --stop --force -v
 	docker rmi $(IMAGES) --force 2>/dev/null; true
 
-.PHONY: docker
-docker:
-	docker compose -f dockerfiles/docker-compose.yml -p supermenu up
+.PHONY: env
+env:
+	docker compose -f dockerfiles/docker-compose.yml -p supermenu up -d
 
 %:
 	@:
