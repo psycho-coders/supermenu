@@ -7,8 +7,8 @@ class Menu:
         self.data = data
 
     def get(self):
-        doc = db.collection(u'menu').where(u'id', u'==', self.id)
-        if doc.exists:    
+        doc = db.collection(u'menu').document(f'{self.id}').get()
+        if doc.exists:
             self.data = doc.get().to_dict()
 
     def create(self):
