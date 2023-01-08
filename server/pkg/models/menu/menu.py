@@ -9,8 +9,8 @@ class Menu:
     def get(self):
         doc = db.collection(u'menu').where(u'id', u'==', self.id)
         if doc.exists:    
-            self.params = doc.get().to_dict()
-        else: self.params = dict()
+            self.data = doc.get().to_dict()
+        else: self.data = dict()
 
     def create(self):
         doc_ref = db.collection(u'menu').document(f'{self.id}')
