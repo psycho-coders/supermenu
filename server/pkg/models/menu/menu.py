@@ -7,14 +7,14 @@ class Menu:
         self.data = data
 
     def get(self):
-        doc = db.collection(u'menu').document(f'{self.id}').get()
-        if doc.exists:
-            self.data = doc.to_dict()
+        doc_ref = db.collection('menu').document(f'{self.id}')
+        doc = doc_ref.get()
+        self.data = doc.to_dict()
 
     def create(self):
-        doc_ref = db.collection(u'menu').document(f'{self.id}')
+        doc_ref = db.collection('menu').document(f'{self.id}')
         doc_ref.set({
-            u'data': self.data,
+            'data': self.data,
         })
 
     def delete():
