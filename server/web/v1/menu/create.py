@@ -4,5 +4,5 @@ from pkg.models.menu.menu import Menu
 
 @menu_handler.route("/create")
 def create():
-    Menu("id", "1").create()
+    Menu("1", "<body> </body").create()
     return "created"
