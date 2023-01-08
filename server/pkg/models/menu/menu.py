@@ -2,20 +2,20 @@ from pkg.models import db
 
 
 class Menu:
-    def __init__(self, name, params):
-        self.name = name
-        self.params = params
+    def __init__(self, id, data):
+        self.id = id
+        self.data = data
 
-    def get(self, name):
-        doc = db.collection(u'menu').document(u'{name}').format(name=name)
+    def get(self):
+        doc = db.collection(u'menu').where(u'id', u'==', self.id)
         if doc.exists:    
-            return (f'{name} ==> {doc.get().to_dict()}'), 200
-        return "Data not found", 404
+            self.params = doc.get().to_dict()
+        else: self.params = dict()
 
     def create(self):
-        doc_ref = db.collection(u'menu').document(f'{self.name}')
+        doc_ref = db.collection(u'menu').document(f'{self.id}')
         doc_ref.set({
-            u'data': self.params,
+            u'data': self.data,
         })
 
     def delete():
