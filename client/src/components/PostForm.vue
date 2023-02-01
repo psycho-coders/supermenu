@@ -27,8 +27,8 @@ export default {
 <template>
   <form @submit.prevent>
     <h4>Creation</h4>
-    <my-input v-model="post.title" type="text" placeholder="Post" />
-    <my-input v-model="post.body" type="text" placeholder="Description" />
+    <my-input v-model.trim="post.title" type="text" placeholder="Post" />
+    <my-input v-model.trim="post.body" type="text" placeholder="Description" />
     <my-button
       class="btn"
       style="align-self: flex-end; margin-top: 15px"
@@ -43,5 +43,11 @@ export default {
 form {
   display: flex;
   flex-direction: column;
+}
+
+@media (max-width: 370px) {
+  form {
+    width: 370px;
+  }
 }
 </style>
