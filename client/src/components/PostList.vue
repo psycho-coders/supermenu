@@ -14,16 +14,18 @@ export default {
 </script>
 
 <template>
-  <div v-show="posts.length > 0">
-    <h3>List</h3>
-    <PostItem
-      v-for="post in posts"
-      :post="post"
-      :key="post.id"
-      @remove="$emit('remove', post)"
-    />
+  <div>
+    <div v-if="posts.length > 0">
+      <h3>List</h3>
+      <PostItem
+        v-for="post in posts"
+        :post="post"
+        :key="post.id"
+        @remove="$emit('remove', post)"
+      />
+    </div>
+    <h2 v-else style="color: red">List is empty</h2>
   </div>
-  <h2 v-show="posts.length === 0" style="color: red">List is empty</h2>
 </template>
 
 <style scoped></style>

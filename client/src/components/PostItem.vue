@@ -1,9 +1,5 @@
 <script>
-import MyButton from "./UI/MyButton.vue";
 export default {
-  components: {
-    MyButton,
-  },
   props: {
     post: {
       type: Object,
@@ -20,7 +16,7 @@ export default {
       <div><strong>Описание:</strong> {{ post.body }}</div>
     </div>
     <div class="post__btns">
-      <MyButton @click="$emit('remove', post)">Delete</MyButton>
+      <my-button @click="$emit('remove', post)">Delete</my-button>
     </div>
   </div>
 </template>
