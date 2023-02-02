@@ -29,6 +29,7 @@ export default {
     <h4>Creation</h4>
     <my-input v-model.trim="post.title" type="text" placeholder="Post" />
     <my-input v-model.trim="post.body" type="text" placeholder="Description" />
+    <my-input type="file" placeholder="выберите изображение" />
     <my-button
       class="btn"
       style="align-self: flex-end; margin-top: 15px"

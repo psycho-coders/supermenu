@@ -2,6 +2,7 @@
 import PostForm from "./components/PostForm.vue";
 import PostList from "./components/PostList.vue";
 import MyButton from "./components/UI/MyButton.vue";
+import axios from "axios";
 
 export default {
   components: {
@@ -16,21 +17,6 @@ export default {
           id: 1,
           title: "1",
           body: "Description",
-        },
-        {
-          id: 2,
-          title: "2",
-          body: "Description 2",
-        },
-        {
-          id: 3,
-          title: "3",
-          body: "Description 3",
-        },
-        {
-          id: 4,
-          title: "4",
-          body: "Description 4",
         },
       ],
       dialogVisible: false,
@@ -47,6 +33,15 @@ export default {
     showDialog() {
       this.dialogVisible = true;
     },
+    async sendPost() {
+      const res = await axios.post(
+        "https://my-json-server.typicode.com/typicode/demo/posts",
+        {
+          data: this.$data.posts,
+        }
+      );
+      console.log(res);
+    },
   },
 };
 </script>
@@ -61,6 +56,7 @@ export default {
       <PostForm @create="createPost" />
     </my-dialog>
     <PostList :posts="posts" @remove="removePost" />
+    <my-button style="margin-top: 15px" @click="sendPost">Send</my-button>
   </div>
 </template>
 
