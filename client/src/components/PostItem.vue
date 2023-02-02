@@ -12,8 +12,11 @@ export default {
 <template>
   <div class="post">
     <div>
-      <div><strong>Название:</strong> {{ post.title }}</div>
-      <div><strong>Описание:</strong> {{ post.body }}</div>
+      <div class="post__img">
+        <strong>Изображение: </strong> <img :src="post.img" alt="" />
+        <div><strong>Название:</strong> {{ post.title }}</div>
+        <div><strong>Описание:</strong> {{ post.body }}</div>
+      </div>
     </div>
     <div class="post__btns">
       <my-button @click="$emit('remove', post)">Delete</my-button>
@@ -29,5 +32,14 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+img {
+  width: 100px;
+  height: 100px;
+}
+.post__img {
+  display: flex;
+  flex-direction: column;
 }
 </style>

@@ -17,6 +17,7 @@ export default {
           id: 1,
           title: "1",
           body: "Description",
+          img: null,
         },
       ],
       dialogVisible: false,
@@ -32,6 +33,9 @@ export default {
     },
     showDialog() {
       this.dialogVisible = true;
+    },
+    addFile(img) {
+      this.posts.push(img);
     },
     async sendPost() {
       const res = await axios.post(
@@ -55,7 +59,7 @@ export default {
     <my-dialog v-model:show="dialogVisible">
       <PostForm @create="createPost" />
     </my-dialog>
-    <PostList :posts="posts" @remove="removePost" />
+    <PostList :posts="posts" @remove="removePost" @file="addFile" />
     <my-button style="margin-top: 15px" @click="sendPost">Send</my-button>
   </div>
 </template>
