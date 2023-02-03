@@ -34,7 +34,9 @@ export default {
       const res = await axios.post(
         "http://localhost:5000/v1/create",
         {
-          data: this.$data.posts,
+          creator: "cr1", // TODO: REFACTOR
+          name: "name1",
+          sections: "sections1",
         }
       );
       console.log(res);
