@@ -3,7 +3,7 @@ export default {
   data() {
     return {
       post: {
-        title: "",
+        name: "",
         body: "",
         img: null,
       },
@@ -13,15 +13,15 @@ export default {
     createPost() {
       if (
         this.post.body == "" &&
-        this.post.title == "" &&
+        this.post.name == "" &&
         this.post.img == null
       ) {
         return;
       }
-      this.post.id = Date.now();
+      this.post.creator = "creator_from_wtf";
       this.$emit("create", this.post);
       this.post = {
-        title: "",
+        name: "",
         body: "",
       };
     },
@@ -37,7 +37,7 @@ export default {
 <template>
   <form @submit.prevent>
     <h4>Creation</h4>
-    <my-input v-model.trim="post.title" type="text" placeholder="Post" />
+    <my-input v-model.trim="post.name" type="text" placeholder="Post" />
     <my-input v-model.trim="post.body" type="text" placeholder="Description" />
     <label for="files">Choose file</label>
     <input

@@ -12,14 +12,7 @@ export default {
   },
   data() {
     return {
-      posts: [
-        {
-          id: 1,
-          title: "1",
-          body: "Description",
-          img: null,
-        },
-      ],
+      posts: [],
       dialogVisible: false,
     };
   },
@@ -29,7 +22,7 @@ export default {
       this.dialogVisible = false;
     },
     removePost(post) {
-      this.posts = this.posts.filter((p) => p.id !== post.id);
+      this.posts = this.posts.filter((p) => p.creator !== post.creator);
     },
     showDialog() {
       this.dialogVisible = true;
@@ -39,7 +32,7 @@ export default {
     },
     async sendPost() {
       const res = await axios.post(
-        "https://my-json-server.typicode.com/typicode/demo/posts",
+        "http://localhost:5000/v1/create",
         {
           data: this.$data.posts,
         }

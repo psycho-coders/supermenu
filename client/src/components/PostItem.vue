@@ -14,7 +14,7 @@ export default {
     <div>
       <div class="post__img">
         <strong>Изображение: </strong> <img :src="post.img" alt="" />
-        <div><strong>Название:</strong> {{ post.title }}</div>
+        <div><strong>Название:</strong> {{ post.name }}</div>
         <div><strong>Описание:</strong> {{ post.body }}</div>
       </div>
     </div>

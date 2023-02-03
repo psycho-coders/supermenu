@@ -20,7 +20,7 @@ export default {
       <PostItem
         v-for="post in posts"
         :post="post"
-        :key="post.id"
+        :key="post.creator"
         @remove="$emit('remove', post)"
       />
     </div>
