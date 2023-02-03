@@ -6,7 +6,6 @@ class Menu:
         self.creator = creator
         self.name = name
         self.data = data
-        #fgfdbd
 
     def get(self):
         doc = db \
