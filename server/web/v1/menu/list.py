@@ -1,8 +1,12 @@
-from . import menu_handler
-from pkg.models.menu.menu import Menu
+import json
 
-@menu_handler.route("/list")
-def list():
-    m=Menu("1", None)
-    m.get()
-    return m.data if m.data is not None else "Not Found\n"
+import pkg.models.menu.menu as menu
+
+from . import menu_handler
+
+
+@menu_handler.route("/list/<creator>")
+def list(creator):
+    print(creator)
+    res = menu.all(creator)
+    return json.dumps({"result": [d.__dict__ for d in res]})

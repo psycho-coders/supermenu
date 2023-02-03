@@ -1,6 +1,5 @@
 import web
 
-
 # TODO: use config
 if __name__ == "__main__":
     try:

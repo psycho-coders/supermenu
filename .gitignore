@@ -28,3 +28,4 @@ client/*.sln
 client/*.sw?
 
 server/.vscode/*
+.vscode/*
