@@ -10,3 +10,13 @@ services:
     ports:
       - 4000:4000 # emulator suite ui
       - 8082:8082 # firestore
+
+  web:
+    build:
+      context: ./../
+      dockerfile: dockerfiles/Dockerfile
+    ports:
+      - "5000:5000"
+    command: sh -c "PYTHONDONTWRITEBYTECODE=1 FIRESTORE_EMULATOR_HOST=localhost:8082 GOOGLE_APPLICATION_CREDENTIALS=./fake_creds.json python3 /app/main.py"
+    depends_on:
+      - firebase
